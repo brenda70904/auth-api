@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 
 
+const authRoutes = require('./routes/v1');
 
 const notFoundHandler = require("./error-handlers/404");
 const errorHandler = require("./error-handlers/500");
@@ -13,6 +14,8 @@ const logger = require("./middleware/logger");
 app.use(express.json());
 
 app.use(logger);
+app.use(authRoutes);
+
 
 
 
