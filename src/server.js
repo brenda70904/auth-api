@@ -5,7 +5,8 @@ const cors = require('cors');
 const app = express();
 
 
-const authRoutes = require('./routes/v1');
+const authRoutes = require('./auth/routes');
+const v1Routes = require('./routes/v1');
 
 const notFoundHandler = require("./error-handlers/404");
 const errorHandler = require("./error-handlers/500");
@@ -16,10 +17,7 @@ app.use(express.json());
 app.use(logger);
 app.use(authRoutes);
 
-
-
-
-
+app.use('/api/v1',v1Routes);
 
 app.use("*", notFoundHandler);
 app.use(errorHandler);
