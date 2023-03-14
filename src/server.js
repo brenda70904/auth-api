@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const express = require("express");
+const express = require('express');
 const cors = require('cors');
 const app = express();
 
@@ -9,9 +9,9 @@ const authRoutes = require('./auth/routes');
 const v1Routes = require('./routes/v1');
 const v2Routes = require('./routes/v2');
 
-const notFoundHandler = require("./error-handlers/404");
-const errorHandler = require("./error-handlers/500");
-const logger = require("./middleware/logger");
+const notFoundHandler = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
+const logger = require('./middleware/logger');
 
 app.use(express.json());
 
@@ -21,7 +21,7 @@ app.use(authRoutes);
 app.use('/api/v1',v1Routes);
 app.use('/api/v2',v2Routes);
 
-app.use("*", notFoundHandler);
+app.use('*', notFoundHandler);
 app.use(errorHandler);
 
 module.exports = {

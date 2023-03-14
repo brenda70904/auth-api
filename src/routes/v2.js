@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
-const express = require("express");
+const express = require('express');
 
-const bearerAuth = require("../auth/middleware/bearer");
-const acl = require("../auth/middleware/acl");
+const bearerAuth = require('../auth/middleware/bearer');
+const acl = require('../auth/middleware/acl');
 
 const dataModules = require('../models');
 
@@ -21,9 +21,9 @@ router.param('model', (req, res, next) => {
 
 router.get('/:model', bearerAuth, handleGetAll);
 router.get('/:model/:id',bearerAuth, acl(), handleGetOne);
-router.post('/:model', bearerAuth, acl("create"),handleCreate);
-router.put('/:model/:id', bearerAuth, acl("update"),handleUpdate);
-router.delete('/:model/:id',bearerAuth, acl("delete"), handleDelete);
+router.post('/:model', bearerAuth, acl('create'),handleCreate);
+router.put('/:model/:id', bearerAuth, acl('update'),handleUpdate);
+router.delete('/:model/:id',bearerAuth, acl('delete'), handleDelete);
 
 async function handleGetAll(req, res) {
   let allRecords = await req.model.get();
